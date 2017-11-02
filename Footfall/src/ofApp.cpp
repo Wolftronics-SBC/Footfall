@@ -7,10 +7,6 @@
 
 #include "ofApp.h"
 
-#define oVidFrameW 352
-#define oVidFrameH 288
-#define oVidFPS 15
-
 //--------------------------------------------------------------
 void ofApp::setup()
 {
@@ -26,42 +22,31 @@ void ofApp::setup()
 	
 	cameraManager.setup(configManager.getConfiguration().cameraConfig);
 	trackingManager.setup(configManager.getConfiguration().trackingConfig);
+    recorder.setup();
 	
 	if (_logToServer) httpManager.setup(configManager.getConfiguration().httpConfig);
 	if (_logToCsv) csvManager.setup("csvlogs");
 	
 	ofAddListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofAddListener(trackingManager.blobOut, this, &ofApp::blobOut);
-    
-    string vidFName = "test_ff.avi";
-    vw = new VideoWriter(vidFName,CV_FOURCC('H','2','6','4'),oVidFPS,Size(oVidFrameW,oVidFrameH),true);
 }
 //--------------------------------------------------------------
 void ofApp::exit()
 {
 	if (_logToServer) httpManager.close();
 	if (_logToCsv) csvManager.close();
-		
+	
+    recorder.close();
+    
 	ofRemoveListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofRemoveListener(trackingManager.blobOut, this, &ofApp::blobOut);
-    
-    vw->release();
 }
 //--------------------------------------------------------------
 void ofApp::update()
 {
 	cameraManager.update();
 	trackingManager.update(cameraManager.getImage());
-    
-    Mat inpImg = cameraManager.videoMatrix;
-    if(inpImg.rows * inpImg.cols > 0) {
-        Mat img_resized;
-        resize(inpImg,img_resized,Size(oVidFrameW,oVidFrameH));
-        vw->write(img_resized);
-    }else {
-        cout<<"Frame not written"<<endl;
-        cout<<"Rows: "<<inpImg.rows<<", Cols: "<<inpImg.cols<<endl;
-    }
+    recorder.update(cameraManager.videoMatrix);
 }
 //--------------------------------------------------------------
 void ofApp::draw()

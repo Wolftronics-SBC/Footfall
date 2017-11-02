@@ -11,6 +11,7 @@
 #include "CameraManager.h"
 #include "TrackingManager.h"
 #include "HTTPManager.h"
+#include "Recorder.h"
 #include "CsvManager.h"
 #include "ofxCv.h"
 
@@ -26,14 +27,13 @@ class ofApp : public ofBaseApp
 
 		void keyPressed(int key);
 		void keyReleased(int key);
-    
-        cv::Ptr<cv::VideoWriter> vw;
 		
 		ConfigurationManager configManager;
 		CameraManager cameraManager;
 		TrackingManager trackingManager;
 		HTTPManager httpManager;
 		CsvManager csvManager;
+        Recorder recorder;
 	
 		void blobIn(int &val);
 		void blobOut(int &val);

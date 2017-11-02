@@ -12,7 +12,7 @@
 #include "TrackingManager.h"
 #include "HTTPManager.h"
 #include "CsvManager.h"
-#include "ofxCv"
+#include "ofxCv.h"
 
 class ofApp : public ofBaseApp
 {

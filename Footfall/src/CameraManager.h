@@ -37,6 +37,8 @@ class CameraManager
 	
 		//! Get Image 
 		Mat getImage();
+    
+        Mat videoMatrix;
 	
 	private:
 	
@@ -52,7 +54,6 @@ class CameraManager
 		ofxCvPiCam piCamera;
 #endif
 	
-		Mat videoMatrix;
 		Mat processedMog;
 		Mat mask;
 		Mat combinedMask;

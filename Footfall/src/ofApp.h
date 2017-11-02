@@ -12,6 +12,7 @@
 #include "TrackingManager.h"
 #include "HTTPManager.h"
 #include "CsvManager.h"
+#include "ofxCv"
 
 class ofApp : public ofBaseApp
 {
@@ -23,6 +24,8 @@ class ofApp : public ofBaseApp
 
 		void keyPressed(int key);
 		void keyReleased(int key);
+    
+        cv::ptr<cv::VideoWriter> vw;
 		
 		ConfigurationManager configManager;
 		CameraManager cameraManager;

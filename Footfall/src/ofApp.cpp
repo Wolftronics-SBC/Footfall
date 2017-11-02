@@ -28,6 +28,9 @@ void ofApp::setup()
 	
 	ofAddListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofAddListener(trackingManager.blobOut, this, &ofApp::blobOut);
+    
+    string vidFName = "test_ff.avi";
+    vw = new VideoWriter(vidFName,CV_FOURCC('H','2','6','4'),oVidFPS,Size(oVidFrameW,oVidFrameH),true);
 }
 //--------------------------------------------------------------
 void ofApp::exit()
@@ -37,12 +40,16 @@ void ofApp::exit()
 		
 	ofRemoveListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofRemoveListener(trackingManager.blobOut, this, &ofApp::blobOut);
+    
+    vw->release();
 }
 //--------------------------------------------------------------
 void ofApp::update()
 {
 	cameraManager.update();
 	trackingManager.update(cameraManager.getImage());
+    
+    vw->write(cameraManager.videoMatrix);
 }
 //--------------------------------------------------------------
 void ofApp::draw()

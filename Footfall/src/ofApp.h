@@ -14,6 +14,8 @@
 #include "CsvManager.h"
 #include "ofxCv.h"
 
+using namespace cv;
+
 class ofApp : public ofBaseApp
 {
 	public:

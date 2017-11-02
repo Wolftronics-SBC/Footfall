@@ -7,6 +7,10 @@
 
 #include "ofApp.h"
 
+#define oVidFrameW 352
+#define oVidFrameH 288
+#define oVidFPS 15
+
 //--------------------------------------------------------------
 void ofApp::setup()
 {
@@ -49,7 +53,9 @@ void ofApp::update()
 	cameraManager.update();
 	trackingManager.update(cameraManager.getImage());
     
-    vw->write(cameraManager.videoMatrix);
+    Mat img_resized;
+    resize(cameraManager.videoMatrix,img_resized,Size(oVidFrameW,oVidFrameH));
+    vw->write(img_resized);
 }
 //--------------------------------------------------------------
 void ofApp::draw()

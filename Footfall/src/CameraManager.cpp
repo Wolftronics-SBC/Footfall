@@ -36,12 +36,11 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
 	}
 	
 	// Setup the Background MOG2
-	pMOG2 = new BackgroundSubtractorMOG2(_cameraConfig.history,
-										 _cameraConfig.mogThreshold,
-										 _cameraConfig.bTrackShadows
-										 );
-	// This is the ratio of the shadow detection. I.e how many times lighter the shadow needs to be to be considered a blob.
-	pMOG2->setDouble("fTau", _cameraConfig.shadowPixelRatio);
+    pMOG2 = createBackgroundSubtractorMOG2();
+    pMOG2->setHistory(_cameraConfig.history);
+    pMOG2->setVarThreshold(_cameraConfig.mogThreshold);
+    pMOG2->setDetectShadows(_cameraConfig.bTrackShadows);
+    pMOG2->setShadowThreshold(_cameraConfig.shadowPixelRatio);
 	
 #ifdef USE_VIDEO
 	cout << " - Using Video" << endl;
@@ -102,12 +101,14 @@ void CameraManager::update()
 		if (_useMask)
 		{
 			videoMatrix.copyTo(combinedMask, mask);
-			pMOG2->operator()(combinedMask,processedMog);
+			//pMOG2->operator()(combinedMask,processedMog);
+            pMOG2->apply(combinedMask,processedMog);
 		}
 		else
 		{
-			pMOG2->operator()(videoMatrix,processedMog);
-		}
+			//pMOG2->operator()(videoMatrix,processedMog);
+            pMOG2->apply(videoMatrix,processedMog);
+        }
 		
 		// Get the background image
 		pMOG2->getBackgroundImage(background);

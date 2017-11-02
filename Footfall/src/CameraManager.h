@@ -59,7 +59,7 @@ class CameraManager
 		Mat background;
 		Mat unprocessed_MOG;
 	
-		BackgroundSubtractorMOG2 *pMOG2;
+        Ptr<BackgroundSubtractor> pM0G2;
 	
 		vector<cv::Point> _maskPts;
 		bool _useMask;

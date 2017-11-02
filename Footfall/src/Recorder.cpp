@@ -5,6 +5,7 @@
 
 #include "Recorder.h"
 
+#define baseDirPath "/home/pi/workspace/vidStore/"
 #define maxVidLength_Mins 30
 #define oVidFrameW 352
 #define oVidFrameH 288
@@ -86,7 +87,7 @@ string Recorder::genFileNameForTime(time_t timeVal) {
 
 //--------------------------------------------------------------
 VideoWriter Recorder::genVideoWriter(string fPName) {
-    string vidFName = fPName + ".avi";
+    string vidFName = baseDirPath + fPName + ".avi";
     VideoWriter vw(vidFName,CV_FOURCC('H','2','6','4'),oVidFPS,Size(oVidFrameW,oVidFrameH),true);
     return vw;
 }

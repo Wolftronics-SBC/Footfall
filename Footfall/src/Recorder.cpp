@@ -26,7 +26,7 @@ void Recorder::setup()
 //--------------------------------------------------------------
 void Recorder::write(Mat img)
 {
-    if((img.rows * img.cols > 0) && vidWriter.isOpen()) {
+    if((img.rows * img.cols > 0) && vidWriter.isOpened()) {
         
         //Vid Length Check
         time_t now;
@@ -53,21 +53,21 @@ void Recorder::write(Mat img)
         
         //Resize image
         Mat img_resized;
-        resize(inpImg,img_resized,Size(oVidFrameW,oVidFrameH));
+        resize(img,img_resized,Size(oVidFrameW,oVidFrameH));
         
         //Write to Video
         vidWriter.write(img_resized);
         frmCount++;
     }else {
         cout<<"Frame not written"<<endl;
-        cout<<"Rows: "<<inpImg.rows<<", Cols: "<<inpImg.cols<<endl;
+        cout<<"Rows: "<<img.rows<<", Cols: "<<img.cols<<endl;
     }
 }
 
 //--------------------------------------------------------------
 void Recorder::close()
 {
-    if(vidWriter.isOpen()) {
+    if(vidWriter.isOpened()) {
         vidWriter.release();
     }
 }

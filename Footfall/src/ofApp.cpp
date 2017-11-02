@@ -46,7 +46,7 @@ void ofApp::update()
 {
 	cameraManager.update();
 	trackingManager.update(cameraManager.getImage());
-    recorder.update(cameraManager.videoMatrix);
+    recorder.write(cameraManager.videoMatrix);
 }
 //--------------------------------------------------------------
 void ofApp::draw()

@@ -21,9 +21,10 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
 			_maskPts.push_back(p);
 		}
 		
-		mask = cvCreateMat(_cameraConfig.cameraheight, _cameraConfig.camerawidth, CV_8UC1);
-		combinedMask = cvCreateMat(_cameraConfig.cameraheight, _cameraConfig.camerawidth, CV_8UC1);
+		mask = Mat(_cameraConfig.cameraheight, _cameraConfig.camerawidth, CV_8UC1);
+		combinedMask = Mat(_cameraConfig.cameraheight, _cameraConfig.camerawidth, CV_8UC1);
 		
+        
 		// Fill the Mat with black
 		for(int i=0; i<mask.cols; i++)
 			for(int j=0; j<mask.rows; j++)

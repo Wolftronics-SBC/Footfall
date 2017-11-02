@@ -53,9 +53,15 @@ void ofApp::update()
 	cameraManager.update();
 	trackingManager.update(cameraManager.getImage());
     
-    Mat img_resized;
-    resize(cameraManager.videoMatrix,img_resized,Size(oVidFrameW,oVidFrameH));
-    vw->write(img_resized);
+    Mat inpImg = cameraManager.videoMatrix;
+    if(inpImg.rows * inpImg.cols > 0) {
+        Mat img_resized;
+        resize(inpImg,img_resized,Size(oVidFrameW,oVidFrameH));
+        vw->write(img_resized);
+    }else {
+        cout<<"Frame not written"<<endl;
+        cout<<"Rows: "<<inpImg.rows<<", Cols: "<<inpImg.cols<<endl;
+    }
 }
 //--------------------------------------------------------------
 void ofApp::draw()

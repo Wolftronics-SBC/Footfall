@@ -1,6 +1,7 @@
 .DS_Store
 Footfall/obj/
 Footfall/bin/
+Footfall/bin/data/
 
 # Prerequisites
 *.d

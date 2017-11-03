@@ -14,7 +14,7 @@
 //--------------------------------------------------------------
 void Recorder::setup()
 {
-	cout << "Setting Up Recorder";
+	cout << "Setting Up Recorder"<<endl;
 	
     //Initialize videoWriter constructs
     time(&time_OVidFCreated);

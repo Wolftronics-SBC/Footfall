@@ -86,7 +86,7 @@ void ConfigurationManager::loadConfiguration(string file)
         config.otherConfig.videoOutputPath = configFile["Footfall"]["OtherConfig"]["videoOutputPath"].asString();
         config.otherConfig.baseImagePath = configFile["Footfall"]["OtherConfig"]["baseImagePath"].asString();
         config.otherConfig.appVersion = configFile["Footfall"]["OtherConfig"]["applicationVersion"].asString();
-        config.otherConfig.configVersion = configFile["Footfall"]["OtherConfig"]["configJsonVersion"].asString();
+        config.otherConfig.configVersion = configFile["Footfall"]["OtherConfig"]["configJsonVersion"].asInt();
     }
 }
 

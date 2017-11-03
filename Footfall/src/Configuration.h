@@ -75,7 +75,7 @@ struct Other_Configuration
     string videoOutputPath;
     string baseImagePath;
     string appVersion;
-    string configVersion;
+    int configVersion;
 };
 
 struct Configuration

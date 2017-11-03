@@ -35,10 +35,10 @@ void Recorder::write(Mat img)
         double secs_elapsed = difftime(now,time_OVidFCreated);
         if(secs_elapsed > (maxVidLength_Mins * 60)) {
             //Log Current Video file details
-            cout<<"Closing Video file with name: "<<vidFPName;
+            cout<<"Closing Video file with name: "<<vidFPName<<endl;
             cout<<"Time Elapsed: "<<secs_elapsed<<" secs"<<endl;
             cout<<"Number of Frames Written: "<<frmCount<<endl;
-            cout<<"Avg recording FPS: "<<frmCount/(double)secs_elapsed;
+            cout<<"Avg recording FPS: "<<frmCount/(double)secs_elapsed<<endl;
             
             //Close the current video file
             frmCount = 0;

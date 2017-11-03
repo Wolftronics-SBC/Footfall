@@ -1,7 +1,6 @@
 .DS_Store
-Footfall/obj/
-Footfall/bin/
-Footfall/bin/data/
+obj/
+bin/
 
 # Prerequisites
 *.d

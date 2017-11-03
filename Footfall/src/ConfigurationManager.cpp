@@ -39,7 +39,7 @@ void ConfigurationManager::loadConfiguration(string file)
 		config.cameraConfig.bFlipV = configFile["Footfall"]["CameraConfig"]["flipveritcally"].asBool();
 		config.cameraConfig.bUseMask = configFile["Footfall"]["CameraConfig"]["usemask"].asBool();
 		config.cameraConfig.bShowShadowImage = configFile["Footfall"]["CameraConfig"]["showshadowimage"].asBool();
-
+        
 		vector<ofPoint> pts;
 		int maskSize = configFile["Footfall"]["CameraConfig"]["MaskArea"].size();
 		for (int i = 0 ; i < maskSize; i++) {
@@ -76,7 +76,18 @@ void ConfigurationManager::loadConfiguration(string file)
 		config.httpConfig.secretkey = configFile["Footfall"]["HttpConfig"]["secretkey"].asString();
 		config.httpConfig.maxretries = configFile["Footfall"]["HttpConfig"]["maxretries"].asInt();
 		config.httpConfig.keepbackups = configFile["Footfall"]["HttpConfig"]["keepbackups"].asBool();
-	}
+	
+        //Other config
+        config.otherConfig.cameraID = configFile["Footfall"]["OtherConfig"]["cameraID"];
+        config.otherConfig.storeID = configFile["Footfall"]["OtherConfig"]["storeID"];
+        config.otherConfig.macID = configFile["Footfall"]["OtherConfig"]["macID"];
+        config.otherConfig.storeName = configFile["Footfall"]["OtherConfig"]["storeName"];
+        config.otherConfig.csvOutputPath = configFile["Footfall"]["OtherConfig"]["csvOutputPath"];
+        config.otherConfig.videoOutputPath = configFile["Footfall"]["OtherConfig"]["videoOutputPath"];
+        config.otherConfig.baseImagePath = configFile["Footfall"]["OtherConfig"]["baseImagePath"];
+        config.otherConfig.applicationVersion = configFile["Footfall"]["OtherConfig"]["applicationVersion"];
+        config.otherConfig.configJsonVersion = configFile["Footfall"]["OtherConfig"]["configJsonVersion"];
+    }
 }
 
 //--------------------------------------------------------------

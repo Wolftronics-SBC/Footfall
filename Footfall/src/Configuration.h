@@ -63,6 +63,20 @@ struct HTTP_Configuration
 	bool keepbackups;
 };
 
+struct Other_Configuration
+{
+    int cameraID;
+    int storeID;
+    string macID;
+    string storeName;
+    string buildStartTime;
+    string buildStopTime;
+    string csvOutputPath;
+    string videoOutputPath;
+    string appVersion;
+    string configVersion;
+};
+
 struct Configuration
 {
 	bool useHttp;
@@ -70,6 +84,7 @@ struct Configuration
 	Camera_Configuration cameraConfig;
 	Tracking_Configuration trackingConfig;
 	HTTP_Configuration httpConfig;
+    Other_Configuration otherConfig;
 };
 
 struct Post_Data

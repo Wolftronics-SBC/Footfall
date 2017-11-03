@@ -73,6 +73,7 @@ struct Other_Configuration
     string buildStopTime;
     string csvOutputPath;
     string videoOutputPath;
+    string baseImagePath;
     string appVersion;
     string configVersion;
 };

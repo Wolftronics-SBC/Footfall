@@ -78,15 +78,15 @@ void ConfigurationManager::loadConfiguration(string file)
 		config.httpConfig.keepbackups = configFile["Footfall"]["HttpConfig"]["keepbackups"].asBool();
 	
         //Other config
-        config.otherConfig.cameraID = configFile["Footfall"]["OtherConfig"]["cameraID"];
-        config.otherConfig.storeID = configFile["Footfall"]["OtherConfig"]["storeID"];
-        config.otherConfig.macID = configFile["Footfall"]["OtherConfig"]["macID"];
-        config.otherConfig.storeName = configFile["Footfall"]["OtherConfig"]["storeName"];
-        config.otherConfig.csvOutputPath = configFile["Footfall"]["OtherConfig"]["csvOutputPath"];
-        config.otherConfig.videoOutputPath = configFile["Footfall"]["OtherConfig"]["videoOutputPath"];
-        config.otherConfig.baseImagePath = configFile["Footfall"]["OtherConfig"]["baseImagePath"];
-        config.otherConfig.appVersion = configFile["Footfall"]["OtherConfig"]["applicationVersion"];
-        config.otherConfig.configVersion = configFile["Footfall"]["OtherConfig"]["configJsonVersion"];
+        config.otherConfig.cameraID = configFile["Footfall"]["OtherConfig"]["cameraID"].asInt();
+        config.otherConfig.storeID = configFile["Footfall"]["OtherConfig"]["storeID"].asInt();
+        config.otherConfig.macID = configFile["Footfall"]["OtherConfig"]["macID"].asString();
+        config.otherConfig.storeName = configFile["Footfall"]["OtherConfig"]["storeName"].asString();
+        config.otherConfig.csvOutputPath = configFile["Footfall"]["OtherConfig"]["csvOutputPath"].asString();
+        config.otherConfig.videoOutputPath = configFile["Footfall"]["OtherConfig"]["videoOutputPath"].asString();
+        config.otherConfig.baseImagePath = configFile["Footfall"]["OtherConfig"]["baseImagePath"].asString();
+        config.otherConfig.appVersion = configFile["Footfall"]["OtherConfig"]["applicationVersion"].asString();
+        config.otherConfig.configVersion = configFile["Footfall"]["OtherConfig"]["configJsonVersion"].asString();
     }
 }
 

@@ -117,15 +117,16 @@ void ofApp::takePhotoForCalibration() {
     
     //Mark In/Out indicator
     int fontFace = FONT_HERSHEY_PLAIN;
-    double fontScale = 1;
-    int thickness = 2;
+    double fontScale = 2;
+    int thickness = 1;
+    int padding = 5;
     {
     string text = "In";
     int baseline = 0;
     Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
     // center the text
     Point textOrg((img.cols - textSize.width)/2,
-                  textSize.height);
+                  textSize.height + padding);
     putText(img, text, textOrg, fontFace, fontScale,
             Scalar::all(255), thickness, 8);
     }
@@ -135,7 +136,7 @@ void ofApp::takePhotoForCalibration() {
         Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
         // center the text
         Point textOrg((img.cols - textSize.width)/2,
-                      img.rows - textSize.height);
+                      img.rows - padding);
         putText(img, text, textOrg, fontFace, fontScale,
                 Scalar::all(255), thickness, 8);
     }

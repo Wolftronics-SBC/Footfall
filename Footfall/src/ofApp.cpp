@@ -96,4 +96,11 @@ void ofApp::blobOut(int &val)
 //--------------------------------------------------------------
 void ofApp::takePhotoForCalibration() {
     cout<<"Taking photo for calibration"<<endl;
+    string imgDirPath = configManager.getConfiguration().otherConfig.baseImagePath;
+    string imgPath = imgDirPath + "calibPhoto.jpg";
+    
+    Mat img = cameraManager.videoMatrix;
+    imwrite(imgPath,img);
+    
+    cout<<"Photo for calibration written at Path: "<<imgPath<<endl;
 }

@@ -15,7 +15,7 @@ void Recorder::setup(Recording_Configuration _config)
     recdFrameWidth = _config.frameWidth;
     recdFrameHeight = _config.frameHeight;
     recdVidLength_Mins = _config.videoLength_Mins;
-    recdDirPath = _config.videoOuputPath;
+    recdDirPath = _config.videoOutputPath;
     
     //Initialize videoWriter constructs
     time(&time_OVidFCreated);

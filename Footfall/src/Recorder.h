@@ -6,12 +6,14 @@
 #ifndef Recorder_h
 #define Recorder_h
 
+#include <iostream>
 #include <stdio.h>
 #include <sys/time.h>
 #include "Configuration.h"
 #include "ofMain.h"
 #include "ofxCv.h"
 
+using namespace std;
 using namespace cv;
 
 class Recorder

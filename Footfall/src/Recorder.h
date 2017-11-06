@@ -9,9 +9,9 @@
 #include <iostream>
 #include <stdio.h>
 #include <sys/time.h>
-#include "Configuration.h"
 #include "ofMain.h"
 #include "ofxCv.h"
+#include "Configuration.h"
 
 using namespace std;
 using namespace cv;

@@ -116,9 +116,9 @@ void ofApp::takePhotoForCalibration() {
     img = img_resized;
     
     //Mark In/Out indicator
-    int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX;
-    double fontScale = 2;
-    int thickness = 3;
+    int fontFace = FONT_HERSHEY_PLAIN;
+    double fontScale = 1;
+    int thickness = 2;
     {
     string text = "In";
     int baseline = 0;

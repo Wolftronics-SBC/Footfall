@@ -120,7 +120,8 @@ void ofApp::takePhotoForCalibration() {
     double fontScale = 2;
     int thickness = 3;
     {
-    string txt = "In";
+    string text = "In";
+    int baseline = 0;
     Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
     // center the text
     Point textOrg((img.cols - textSize.width)/2,
@@ -129,7 +130,8 @@ void ofApp::takePhotoForCalibration() {
             Scalar::all(255), thickness, 8);
     }
     {
-        string txt = "Out";
+        string text = "Out";
+        int baseline = 0;
         Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
         // center the text
         Point textOrg((img.cols - textSize.width)/2,

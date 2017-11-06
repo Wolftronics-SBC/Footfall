@@ -93,3 +93,7 @@ void ofApp::blobOut(int &val)
 	if (_logToServer) httpManager.post(ofToString(val));
 	if (_logToCsv) csvManager.addRecord(ofToString(val), ofGetTimestampString("%Y-%m-%d %H:%M:%S"));
 }
+//--------------------------------------------------------------
+void ofApp::takePhotoForCalibration() {
+    cout<<"Taking photo for calibration"<<endl;
+}

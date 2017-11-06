@@ -37,6 +37,7 @@ class ofApp : public ofBaseApp
 	
 		void blobIn(int &val);
 		void blobOut(int &val);
+        void takePhotoForCalibration();
 	
 		bool _logToCsv;
 		bool _logToServer;

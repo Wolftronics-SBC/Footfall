@@ -16,10 +16,13 @@ void ofApp::setup()
 	cout << "-------------------- Footfall --------------------" << endl;
 	
 	configManager.loadConfiguration("config.json");
+    cout<<"Config version: "<<configManager.getConfiguration().otherConfig.configVersion<<endl;
 	
 	_logToCsv = configManager.getConfiguration().useCsvLogging;
 	_logToServer = configManager.getConfiguration().useHttp;
     _recordingEnabled = configManager.getConfiguration().vidRecordingEnabled;
+    
+    cout<<"Recording Enabled: "<<_recordingEnabled<<endl;
 	
 	cameraManager.setup(configManager.getConfiguration().cameraConfig);
 	trackingManager.setup(configManager.getConfiguration().trackingConfig);

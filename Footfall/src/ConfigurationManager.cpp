@@ -21,6 +21,7 @@ void ConfigurationManager::loadConfiguration(string file)
 		// App Settings
 		config.useHttp = configFile["Footfall"]["AppConfig"]["usehttp"].asBool();
 		config.useCsvLogging = configFile["Footfall"]["AppConfig"]["usecsvlogging"].asBool();
+        config.vidRecordingEnabled = configFile["Footfall"]["AppConfig"]["videoRecordingEnabled"].asBool();
 		
 		config.cameraConfig.camerawidth = configFile["Footfall"]["CameraConfig"]["camerawidth"].asInt();
 		config.cameraConfig.cameraheight = configFile["Footfall"]["CameraConfig"]["cameraheight"].asInt();
@@ -83,10 +84,16 @@ void ConfigurationManager::loadConfiguration(string file)
         config.otherConfig.macID = configFile["Footfall"]["OtherConfig"]["macID"].asString();
         config.otherConfig.storeName = configFile["Footfall"]["OtherConfig"]["storeName"].asString();
         config.otherConfig.csvOutputPath = configFile["Footfall"]["OtherConfig"]["csvOutputPath"].asString();
-        config.otherConfig.videoOutputPath = configFile["Footfall"]["OtherConfig"]["videoOutputPath"].asString();
         config.otherConfig.baseImagePath = configFile["Footfall"]["OtherConfig"]["baseImagePath"].asString();
         config.otherConfig.appVersion = configFile["Footfall"]["OtherConfig"]["applicationVersion"].asString();
         config.otherConfig.configVersion = configFile["Footfall"]["OtherConfig"]["configJsonVersion"].asInt();
+        
+        //Recording Config
+        config.recordingConfig.videoLength_Mins = configFile["Footfall"]["RecorderConfig"]["videoLength_Mins"].asInt();
+        config.recordingConfig.frameWidth = configFile["Footfall"]["RecorderConfig"]["frameWidth"].asInt();
+        config.recordingConfig.frameHeight = configFile["Footfall"]["RecorderConfig"]["frameHeight"].asInt();
+        config.recordingConfig.fps = configFile["Footfall"]["RecorderConfig"]["fps"].asInt();
+        config.recordingConfig.videoOutputPath = configFile["Footfall"]["RecorderConfig"]["videoOutputPath"].asString();
     }
 }
 

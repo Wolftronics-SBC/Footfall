@@ -19,13 +19,14 @@ void ofApp::setup()
 	
 	_logToCsv = configManager.getConfiguration().useCsvLogging;
 	_logToServer = configManager.getConfiguration().useHttp;
+    _recordingEnabled = configManager.getConfiguration().vidRecordingEnabled;
 	
 	cameraManager.setup(configManager.getConfiguration().cameraConfig);
 	trackingManager.setup(configManager.getConfiguration().trackingConfig);
-    recorder.setup();
 	
 	if (_logToServer) httpManager.setup(configManager.getConfiguration().httpConfig);
 	if (_logToCsv) csvManager.setup("csvlogs");
+    if (_recordingEnabled) recorder.setup(configManager.getConfiguration().recordingConfig);
 	
 	ofAddListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofAddListener(trackingManager.blobOut, this, &ofApp::blobOut);
@@ -35,8 +36,7 @@ void ofApp::exit()
 {
 	if (_logToServer) httpManager.close();
 	if (_logToCsv) csvManager.close();
-	
-    recorder.close();
+    if (_recordingEnabled) recorder.close();
     
 	ofRemoveListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofRemoveListener(trackingManager.blobOut, this, &ofApp::blobOut);
@@ -46,7 +46,7 @@ void ofApp::update()
 {
 	cameraManager.update();
 	trackingManager.update(cameraManager.getImage());
-    recorder.write(cameraManager.videoMatrix);
+    if (_recordingEnabled) recorder.write(cameraManager.videoMatrix);
 }
 //--------------------------------------------------------------
 void ofApp::draw()

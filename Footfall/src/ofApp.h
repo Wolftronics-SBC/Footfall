@@ -41,6 +41,7 @@ class ofApp : public ofBaseApp
 	
 		bool _logToCsv;
 		bool _logToServer;
+        bool _recordingEnabled;
 		int peopleIn;
 		int peopleOut;
 };

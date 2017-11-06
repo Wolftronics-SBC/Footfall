@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <sys/time.h>
+#include "Configuration.h"
 #include "ofMain.h"
 #include "ofxCv.h"
 
@@ -18,7 +19,7 @@ class Recorder
 	public:
     
         //! Setup
-		void setup();
+		void setup(Recording_Configuration _config);
 	
 		//! Update
         void write(Mat img);
@@ -30,6 +31,12 @@ class Recorder
     
         string genFileNameForTime(time_t timeVal);
         VideoWriter genVideoWriter(string fPName);
+    
+        //Recording parameters
+        int recordingFPS;
+        int recdFrameWidth,recdFrameHeight;
+        int recdVidLength_Mins;
+        string recdDirPath;
     
         //Video Writer Constructs
         time_t time_OVidFCreated;

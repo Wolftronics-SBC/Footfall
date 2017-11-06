@@ -5,17 +5,18 @@
 
 #include "Recorder.h"
 
-#define baseDirPath "/home/pi/workspace/vidStore/"
-#define maxVidLength_Mins 30
-#define oVidFrameW 352
-#define oVidFrameH 288
-#define oVidFPS 15
-
 //--------------------------------------------------------------
-void Recorder::setup()
+void Recorder::setup(recordingConfig _config)
 {
 	cout << "Setting Up Recorder"<<endl;
 	
+    //Load data from configuration
+    recordingFPS = _config.fps;
+    recdFrameWidth = _config.frameWidth;
+    recdFrameHeight = _config.frameHeight;
+    recdVidLength_Mins = _config.videoLength_Mins;
+    recdDirPath = _config.videoOuputPath;
+    
     //Initialize videoWriter constructs
     time(&time_OVidFCreated);
     frmCount = 0;
@@ -33,7 +34,7 @@ void Recorder::write(Mat img)
         time_t now;
         time(&now);
         double secs_elapsed = difftime(now,time_OVidFCreated);
-        if(secs_elapsed > (maxVidLength_Mins * 60)) {
+        if(secs_elapsed > (recdVidLength_Mins * 60)) {
             //Log Current Video file details
             cout<<"Closing Video file with name: "<<vidFPName<<endl;
             cout<<"Time Elapsed: "<<secs_elapsed<<" secs"<<endl;
@@ -54,7 +55,7 @@ void Recorder::write(Mat img)
         
         //Resize image
         Mat img_resized;
-        resize(img,img_resized,Size(oVidFrameW,oVidFrameH));
+        resize(img,img_resized,Size(recdFrameWidth,recdFrameHeight));
         
         //Write to Video
         vidWriter.write(img_resized);
@@ -87,7 +88,7 @@ string Recorder::genFileNameForTime(time_t timeVal) {
 
 //--------------------------------------------------------------
 VideoWriter Recorder::genVideoWriter(string fPName) {
-    string vidFName = baseDirPath + fPName + ".avi";
-    VideoWriter vw(vidFName,CV_FOURCC('H','2','6','4'),oVidFPS,Size(oVidFrameW,oVidFrameH),true);
+    string vidFName = recdDirPath + fPName + ".avi";
+    VideoWriter vw(vidFName,CV_FOURCC('H','2','6','4'),recordingFPS,Size(recdFrameWidth,recdFrameHeight),true);
     return vw;
 }

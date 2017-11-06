@@ -72,20 +72,31 @@ struct Other_Configuration
     string buildStartTime;
     string buildStopTime;
     string csvOutputPath;
-    string videoOutputPath;
     string baseImagePath;
     string appVersion;
     int configVersion;
+    bool vidRecordingEnabled;
+};
+
+struct Recording_Configuration
+{
+    string videoOutputPath;
+    int videoLength_Mins;
+    int frameWidth;
+    int frameHeight;
+    int fps;
 };
 
 struct Configuration
 {
 	bool useHttp;
 	bool useCsvLogging;
+    bool vidRecordingEnabled;
 	Camera_Configuration cameraConfig;
 	Tracking_Configuration trackingConfig;
 	HTTP_Configuration httpConfig;
     Other_Configuration otherConfig;
+    Recording_Configuration recordingConfig;
 };
 
 struct Post_Data

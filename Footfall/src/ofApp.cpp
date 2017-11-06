@@ -102,7 +102,43 @@ void ofApp::takePhotoForCalibration() {
     string imgDirPath = configManager.getConfiguration().otherConfig.baseImagePath;
     string imgPath = imgDirPath + "calibPhoto.jpg";
     
+    //Get current frame
     Mat img = cameraManager.videoMatrix;
+    
+    //Resize Image according to recording size
+    Recording_Configuration recdConfig;
+    recdConfig = configManager.getConfiguration().recordingConfig;
+    int frameW,frameH;
+    frameW = recdConfig.frameWidth;
+    frameH = recdConfig.frameHeight;
+    Mat img_resized;
+    resize(img,img_resized,Size(frameW,frameH));
+    img = img_resized;
+    
+    //Mark In/Out indicator
+    int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX;
+    double fontScale = 2;
+    int thickness = 3;
+    {
+    string txt = "In";
+    Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
+    // center the text
+    Point textOrg((img.cols - textSize.width)/2,
+                  textSize.height);
+    putText(img, text, textOrg, fontFace, fontScale,
+            Scalar::all(255), thickness, 8);
+    }
+    {
+        string txt = "Out";
+        Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
+        // center the text
+        Point textOrg((img.cols - textSize.width)/2,
+                      img.rows - textSize.height);
+        putText(img, text, textOrg, fontFace, fontScale,
+                Scalar::all(255), thickness, 8);
+    }
+    
+    //Write Image
     imwrite(imgPath,img);
     
     cout<<"Photo for calibration written at Path: "<<imgPath<<endl;

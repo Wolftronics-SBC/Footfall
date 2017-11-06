@@ -6,7 +6,7 @@
 #include "Recorder.h"
 
 //--------------------------------------------------------------
-void Recorder::setup(recordingConfig _config)
+void Recorder::setup(Recording_Configuration _config)
 {
 	cout << "Setting Up Recorder"<<endl;
 	

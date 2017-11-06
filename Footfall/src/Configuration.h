@@ -7,6 +7,10 @@
 #ifndef Configuration_h
 #define Configuration_h
 
+#include <iostream>
+
+using namespace std;
+
 struct Camera_Configuration
 {
 	int camerawidth;

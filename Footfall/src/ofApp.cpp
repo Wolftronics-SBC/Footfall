@@ -125,20 +125,16 @@ void ofApp::takePhotoForCalibration() {
     int baseline = 0;
     Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
     // center the text
-    Point textOrg((img.cols - textSize.width)/2,
-                  textSize.height + padding);
-    putText(img, text, textOrg, fontFace, fontScale,
-            Scalar::all(255), thickness, 8);
+    Point textOrg((img.cols - textSize.width)/2, textSize.height + padding);
+    putText(img, text, textOrg, fontFace, fontScale, Scalar(0,200,0), thickness, 8);
     }
     {
         string text = "Out";
         int baseline = 0;
         Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
         // center the text
-        Point textOrg((img.cols - textSize.width)/2,
-                      img.rows - padding);
-        putText(img, text, textOrg, fontFace, fontScale,
-                Scalar::all(255), thickness, 8);
+        Point textOrg((img.cols - textSize.width)/2, img.rows - padding);
+        putText(img, text, textOrg, fontFace, fontScale, Scalar(0,0,200), thickness, 8);
     }
     
     //Write Image

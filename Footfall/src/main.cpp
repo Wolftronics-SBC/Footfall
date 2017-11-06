@@ -4,6 +4,10 @@
 
 ofApp *appInstance;
 
+void handler(int signal) {
+    appInstance->takePhotoForCalibration();
+}
+
 //========================================================================
 int main( ){
 	ofSetupOpenGL(320*3,300,OF_WINDOW);			// <-------- setup the GL context
@@ -16,8 +20,4 @@ int main( ){
     appInstance = new ofApp();
 	ofRunApp(appInstance);
 
-}
-
-void handler(int signal) {
-    appInstance->takePhotoForCalibration();
 }

@@ -13,6 +13,7 @@
 #include "HTTPManager.h"
 #include "Recorder.h"
 #include "CsvManager.h"
+#include "InOutXMLLogger.hpp"
 #include "ofxCv.h"
 
 using namespace cv;
@@ -33,6 +34,7 @@ class ofApp : public ofBaseApp
 		TrackingManager trackingManager;
 		HTTPManager httpManager;
 		CsvManager csvManager;
+        InOutXMLLogger inOutLogger;
         Recorder recorder;
 	
 		void blobIn(int &val);

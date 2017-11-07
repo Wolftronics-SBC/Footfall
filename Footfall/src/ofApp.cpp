@@ -30,6 +30,7 @@ void ofApp::setup()
 	if (_logToServer) httpManager.setup(configManager.getConfiguration().httpConfig);
 	if (_logToCsv) csvManager.setup("csvlogs");
     if (_recordingEnabled) recorder.setup(configManager.getConfiguration().recordingConfig);
+    inOutLogger.setup(configManager.getConfiguration());
 	
 	ofAddListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofAddListener(trackingManager.blobOut, this, &ofApp::blobOut);
@@ -40,6 +41,7 @@ void ofApp::exit()
 	if (_logToServer) httpManager.close();
 	if (_logToCsv) csvManager.close();
     if (_recordingEnabled) recorder.close();
+    inOutLogger.close();
     
 	ofRemoveListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofRemoveListener(trackingManager.blobOut, this, &ofApp::blobOut);
@@ -50,6 +52,7 @@ void ofApp::update()
 	cameraManager.update();
 	trackingManager.update(cameraManager.getImage());
     if (_recordingEnabled) recorder.write(cameraManager.videoMatrix);
+    inOutLogger.update();
 }
 //--------------------------------------------------------------
 void ofApp::draw()
@@ -86,6 +89,7 @@ void ofApp::blobIn(int &val)
 	
 	if (_logToServer) httpManager.post(ofToString(val));
 	if (_logToCsv) csvManager.addRecord(ofToString(val), ofGetTimestampString("%Y-%m-%d %H:%M:%S"));
+    inOutLogger.addInOutRecord(val);
 }
 //--------------------------------------------------------------
 void ofApp::blobOut(int &val)
@@ -95,6 +99,7 @@ void ofApp::blobOut(int &val)
 	
 	if (_logToServer) httpManager.post(ofToString(val));
 	if (_logToCsv) csvManager.addRecord(ofToString(val), ofGetTimestampString("%Y-%m-%d %H:%M:%S"));
+    inOutLogger.addInOutRecord(val);
 }
 //--------------------------------------------------------------
 void ofApp::takePhotoForCalibration() {
@@ -112,7 +117,7 @@ void ofApp::takePhotoForCalibration() {
     frameW = recdConfig.frameWidth;
     frameH = recdConfig.frameHeight;
     Mat img_resized;
-    resize(img,img_resized,Size(frameW,frameH));
+    resize(img,img_resized,cv::Size(frameW,frameH));
     img = img_resized;
     
     //Mark In/Out indicator
@@ -123,17 +128,17 @@ void ofApp::takePhotoForCalibration() {
     {
         string text = "In";
         int baseline = 0;
-        Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
+        cv::Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
         // center the text
-        Point textOrg((img.cols - textSize.width)/2, textSize.height + padding);
-        putText(img, text, textOrg, fontFace, fontScale, Scalar(0,200,0), thickness, 8);
+        cv::Point textOrg((img.cols - textSize.width)/2, textSize.height + padding);
+        putText(img, text, textOrg, fontFace, fontScale, Scalar(0,0,200), thickness, 8);
     }
     {
         string text = "Out";
         int baseline = 0;
-        Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
+        cv::Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
         // center the text
-        Point textOrg((img.cols - textSize.width)/2, img.rows - padding);
+        cv::Point textOrg((img.cols - textSize.width)/2, img.rows - padding);
         putText(img, text, textOrg, fontFace, fontScale, Scalar(0,0,200), thickness, 8);
     }
     

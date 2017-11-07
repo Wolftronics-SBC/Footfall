@@ -17,8 +17,6 @@ void InOutXMLLogger::setup(Configuration config) {
         boost::filesystem::create_directory(_storeFolder);
     }
     
-    logLength_Mins = 1;
-    
     //Reset logHeader
     logHeader.cameraId = config.otherConfig.cameraID;
     logHeader.storeId = config.otherConfig.storeID;

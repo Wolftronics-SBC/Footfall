@@ -131,7 +131,7 @@ void ofApp::takePhotoForCalibration() {
         cv::Size textSize = getTextSize(text, fontFace, fontScale, thickness, &baseline);
         // center the text
         cv::Point textOrg((img.cols - textSize.width)/2, textSize.height + padding);
-        putText(img, text, textOrg, fontFace, fontScale, Scalar(0,0,200), thickness, 8);
+        putText(img, text, textOrg, fontFace, fontScale, Scalar(0,200,0), thickness, 8);
     }
     {
         string text = "Out";

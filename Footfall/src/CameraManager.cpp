@@ -63,8 +63,10 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
     //Shutter speed setting
     if(_cameraConfig.shutterSpeed_MilliSec > 0 ) {
         int shutterSpeed_microSec = _cameraConfig.shutterSpeed_MilliSec * 1000;
-        piCamera.setShutterSpeed(shutterSpeed_microSec);
-        cout<<"Shutter Speed: "<<shutterSpeed_microSec<<" microSec"<<endl;
+        int val = piCamera.setShutterSpeed(shutterSpeed_microSec);
+        cout<<"Shutter Speed: "<<shutterSpeed_microSec<<" microSec, retVal: "<<val<<endl;
+    }else {
+        cout<<"Shutter speed is default"<<endl;
     }
 #endif
 	

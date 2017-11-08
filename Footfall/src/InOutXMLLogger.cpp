@@ -160,7 +160,7 @@ void InOutXMLLogger::finalizeCurrentLogFile() {
     markerLength = 4;
     string finalFPath = currentFilePath;
     pos = finalFPath.find(".tmp");
-    val = ".log";
+    val = ".xml";
     finalFPath = finalFPath.replace(pos, markerLength, val);
     ofstream fFile(finalFPath);
     
@@ -207,8 +207,9 @@ string InOutXMLLogger::genFileNameForTime(time_t timeVal) {
     
     //Generate File Name
     char buf[80];
-    strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", timeinfo);
+    strftime(buf, sizeof(buf), "%d-%m-%Y %H_%M_%S", timeinfo); //%Y%m%d_%H%M%S
     string fileName = string(buf);
+    fileName = to_string(logHeader.storeId) + "_" + to_string(logHeader.cameraId) + "_Footfall_" + fileName;
     return fileName;
 }
 
@@ -224,7 +225,7 @@ string InOutXMLLogger::stringForTime(time_t timeVal) {
     
     //Generate File Name
     char buf[80];
-    strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", timeinfo);
+    strftime(buf, sizeof(buf), "%d/%m/%Y %H:%M:%S", timeinfo); //"%Y%m%d_%H%M%S"
     string timeStr = string(buf);
     return timeStr;
 }

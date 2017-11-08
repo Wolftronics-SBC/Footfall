@@ -96,6 +96,7 @@ void InOutXMLLogger::addInOutRecord(int count) {
         opFile<<xmlRecds[i];
         inOutXMLRecordStrs.push_back(xmlRecds[i]);
     }
+    opFile.flush();
 }
 
 void InOutXMLLogger::close() {

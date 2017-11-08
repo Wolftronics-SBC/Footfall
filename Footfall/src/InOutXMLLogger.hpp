@@ -68,7 +68,7 @@ private:
     
     //Helper methods
     string genFileNameForTime(time_t timeVal);
-    ofstream genOpFileObject(string fPName);
+    void genOpFileObject(string fPName, ofstream &fObj);
     string stringForTime(time_t timeVal);
 };
 

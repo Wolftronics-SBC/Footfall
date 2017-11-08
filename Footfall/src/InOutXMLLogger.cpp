@@ -30,7 +30,7 @@ void InOutXMLLogger::setup(Configuration config) {
     
     time(&logHeader.logStartTime);
     logFName = genFileNameForTime(logHeader.logStartTime);
-    opFile = genOpFileObject(logFName);
+    genOpFileObject(logFName, opFile);
     cout<<"Log file for In/Out created: "<<logFName<<endl;
 }
 
@@ -123,7 +123,7 @@ void InOutXMLLogger::update() {
         time(&now);
         logHeader.logStartTime = now;
         logFName = genFileNameForTime(logHeader.logStartTime);
-        opFile = genOpFileObject(logFName);
+        genOpFileObject(logFName,opFile);
         cout<<"Log file for In/Out created: "<<logFName<<endl;
     }
 }
@@ -209,11 +209,10 @@ string InOutXMLLogger::genFileNameForTime(time_t timeVal) {
     return fileName;
 }
 
-ofstream InOutXMLLogger::genOpFileObject(string fPName) {
+void InOutXMLLogger::genOpFileObject(string fPName, ofstream &fObj) {
     string fileName = _storeFolder + fPName + ".tmp";
-    ofstream file(fileName);
     currentFilePath = fileName;
-    return file;
+    fObj.open(fileName);
 }
 
 string InOutXMLLogger::stringForTime(time_t timeVal) {

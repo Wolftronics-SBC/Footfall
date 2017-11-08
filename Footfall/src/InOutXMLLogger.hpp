@@ -66,6 +66,9 @@ private:
     vector<string> inOutXMLRecordStrs;
     ofstream opFile;
     
+    void finalizeCurrentLogFile();
+    void prepForNextLogFile();
+    
     //Helper methods
     string genFileNameForTime(time_t timeVal);
     void genOpFileObject(string fPName, ofstream &fObj);

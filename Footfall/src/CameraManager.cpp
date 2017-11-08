@@ -59,9 +59,13 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
 	cout << " - Using Pi Camera" << endl;
 	piCamera.setup(_cameraConfig.camerawidth,_cameraConfig.cameraheight,true);
 	piCamera.setFlips(_cameraConfig.bFlipH,_cameraConfig.bFlipV);
-    int shutterSpeed_microSec = _cameraConfig.shutterSpeed_MilliSec * 1000;
-    piCamera.setShutterSpeed(shutterSpeed_microSec);
-    cout<<"Shutter Speed: "<<shutterSpeed_microSec<<" microSec"<<endl;
+    
+    //Shutter speed setting
+    if(_cameraConfig.shutterSpeed_MilliSec > 0 ) {
+        int shutterSpeed_microSec = _cameraConfig.shutterSpeed_MilliSec * 1000;
+        piCamera.setShutterSpeed(shutterSpeed_microSec);
+        cout<<"Shutter Speed: "<<shutterSpeed_microSec<<" microSec"<<endl;
+    }
 #endif
 	
 	_threshold = _cameraConfig.threshold;

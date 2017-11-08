@@ -41,6 +41,8 @@ void ConfigurationManager::loadConfiguration(string file)
 		config.cameraConfig.bUseMask = configFile["Footfall"]["CameraConfig"]["usemask"].asBool();
 		config.cameraConfig.bShowShadowImage = configFile["Footfall"]["CameraConfig"]["showshadowimage"].asBool();
         
+        config.cameraConfig.shutterSpeed_MilliSec = configFile["Footfall"]["CameraConfig"]["shutterSpeed_MilliSec"].asInt();
+        
 		vector<ofPoint> pts;
 		int maskSize = configFile["Footfall"]["CameraConfig"]["MaskArea"].size();
 		for (int i = 0 ; i < maskSize; i++) {

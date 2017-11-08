@@ -21,6 +21,7 @@ struct Camera_Configuration
 	int dilateAmount;
 	int erodeAmount;
 	int blur;
+    int shutterSpeed_MilliSec;
 	
 	float shadowPixelRatio;
 	

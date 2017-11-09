@@ -75,7 +75,6 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
     Camera.set( CV_CAP_PROP_FRAME_WIDTH, _cameraConfig.camerawidth );
     Camera.set( CV_CAP_PROP_FRAME_HEIGHT, _cameraConfig.cameraheight );
     Camera.set( CV_CAP_PROP_FORMAT, CV_8UC3 );
-    Camera.set(
     
     //Shutter speed setting
     if(_cameraConfig.shutterSpeed_MilliSec > 0 ) {

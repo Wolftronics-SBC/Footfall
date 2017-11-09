@@ -53,7 +53,7 @@ void ofApp::update()
 {
 	cameraManager.update();
 	//trackingManager.update(cameraManager.getImage());
-    //if (_recordingEnabled) recorder.write(cameraManager.videoMatrix);
+    if (_recordingEnabled) recorder.write(cameraManager.videoMatrix);
     //inOutLogger.update();
     frmRateCounter.update();
 }

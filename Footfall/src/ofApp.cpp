@@ -11,7 +11,7 @@
 void ofApp::setup()
 {
 	ofSetVerticalSync(true);
-	ofSetFrameRate(40);
+	ofSetFrameRate(30);
 	
 	cout << "-------------------- Footfall --------------------" << endl;
 	

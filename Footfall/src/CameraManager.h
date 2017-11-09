@@ -9,7 +9,8 @@
 
 //#define USE_VIDEO
 //#define USE_WEBCAM
-#define USE_PI_CAM
+//#define USE_PI_CAM
+#define USE_RASPICAM_Lib
 
 #include <stdio.h>
 #include "ofMain.h"
@@ -18,6 +19,10 @@
 
 #ifdef USE_PI_CAM
 	#include "ofxCvPiCam.h"
+#endif
+
+#ifdef USE_RASPICAM_Lib
+    #include <raspicam/raspicam_cv.h>
 #endif
 
 using namespace cv;
@@ -52,6 +57,10 @@ class CameraManager
 	
 #ifdef USE_PI_CAM
 		ofxCvPiCam piCamera;
+#endif
+    
+#ifdef USE_RASPICAM_Lib
+        raspicam::RaspiCam_Cv Camera;
 #endif
 	
 		Mat processedMog;

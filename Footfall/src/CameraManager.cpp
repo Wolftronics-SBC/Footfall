@@ -69,6 +69,27 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
         cout<<"Shutter speed is default"<<endl;
     }
 #endif
+    
+#ifdef USE_RASPICAM_Lib
+    cout << " - Using Pi Camera via RaspiCam lib" << endl;
+    Camera.set( CV_CAP_PROP_FRAME_WIDTH, _cameraConfig.camerawidth );
+    Camera.set( CV_CAP_PROP_FRAME_HEIGHT, _cameraConfig.cameraheight );
+    Camera.set( CV_CAP_PROP_FORMAT, CV_8UC3 );
+    
+    //Shutter speed setting
+    if(_cameraConfig.shutterSpeed_MilliSec > 0 ) {
+        int shutterSpeed_milliSec = _cameraConfig.shutterSpeed_MilliSec;
+        Camera.set( CV_CAP_PROP_FPS, shutterSpeed_milliSec);
+        cout<<"Shutter Speed: "<<shutterSpeed_milliSec<<" milliSec"<<endl;
+    }else {
+        cout<<"Shutter speed is default"<<endl;
+    }
+    
+    //Open camera
+    if (!Camera.open()) {
+        cerr<<"Error opening the camera"<<endl;
+    }
+#endif
 	
 	_threshold = _cameraConfig.threshold;
 	_showShadows = _cameraConfig.bShowShadowImage;
@@ -100,6 +121,16 @@ void CameraManager::update()
 #ifdef USE_PI_CAM
 	videoMatrix = piCamera.grab();
 #endif
+    
+#ifdef USE_RASPICAM_Lib
+    if(Camera.grab()) {
+        Camera.retrieve(videoMatrix);
+    }else {
+        videoMatrix = Mat();
+    }
+    
+#endif
+
 	
 	if (!videoMatrix.empty())
 	{

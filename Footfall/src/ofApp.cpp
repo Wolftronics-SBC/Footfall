@@ -51,7 +51,7 @@ void ofApp::exit()
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	//cameraManager.update();
+	cameraManager.update();
 	//trackingManager.update(cameraManager.getImage());
     //if (_recordingEnabled) recorder.write(cameraManager.videoMatrix);
     //inOutLogger.update();

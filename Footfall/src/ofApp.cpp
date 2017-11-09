@@ -31,6 +31,7 @@ void ofApp::setup()
 	if (_logToCsv) csvManager.setup("csvlogs");
     if (_recordingEnabled) recorder.setup(configManager.getConfiguration().recordingConfig);
     inOutLogger.setup(configManager.getConfiguration());
+    frmRateCounter.setup();
 	
 	ofAddListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofAddListener(trackingManager.blobOut, this, &ofApp::blobOut);
@@ -42,6 +43,7 @@ void ofApp::exit()
 	if (_logToCsv) csvManager.close();
     if (_recordingEnabled) recorder.close();
     inOutLogger.close();
+    frmRateCounter.close();
     
 	ofRemoveListener(trackingManager.blobIn, this, &ofApp::blobIn);
 	ofRemoveListener(trackingManager.blobOut, this, &ofApp::blobOut);
@@ -53,6 +55,7 @@ void ofApp::update()
 	trackingManager.update(cameraManager.getImage());
     if (_recordingEnabled) recorder.write(cameraManager.videoMatrix);
     inOutLogger.update();
+    frmRateCounter.update();
 }
 //--------------------------------------------------------------
 void ofApp::draw()

@@ -14,6 +14,7 @@
 #include "Recorder.h"
 #include "CsvManager.h"
 #include "InOutXMLLogger.hpp"
+#include "FrameRateCounter.hpp"
 #include "ofxCv.h"
 
 using namespace cv;
@@ -36,6 +37,7 @@ class ofApp : public ofBaseApp
 		CsvManager csvManager;
         InOutXMLLogger inOutLogger;
         Recorder recorder;
+        FrameRateCounter frmRateCounter;
 	
 		void blobIn(int &val);
 		void blobOut(int &val);

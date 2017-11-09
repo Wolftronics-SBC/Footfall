@@ -75,6 +75,7 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
     Camera.set( CV_CAP_PROP_FRAME_WIDTH, _cameraConfig.camerawidth );
     Camera.set( CV_CAP_PROP_FRAME_HEIGHT, _cameraConfig.cameraheight );
     Camera.set( CV_CAP_PROP_FORMAT, CV_8UC3 );
+    Camera.set(
     
     //Shutter speed setting
     if(_cameraConfig.shutterSpeed_MilliSec > 0 ) {
@@ -134,6 +135,7 @@ void CameraManager::update()
 	
 	if (!videoMatrix.empty())
 	{
+        /*
 		// Blur the original image
 		GaussianBlur(videoMatrix, _blur);
 		
@@ -169,6 +171,7 @@ void CameraManager::update()
 		// Leave these two
 		threshold(processedMog,50);
 		erode(processedMog,2);
+         */
 	}
 }
 //--------------------------------------------------------------

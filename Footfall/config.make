@@ -77,6 +77,7 @@
 # incorporated directly into the final executable application binary.
 ################################################################################
 # PROJECT_LDFLAGS=-Wl,-rpath=./libs
+USER_LIBS = -lraspicam -lraspicam_cv -lmmal -lmmal_core -lmmal_util
 
 ################################################################################
 # PROJECT DEFINES

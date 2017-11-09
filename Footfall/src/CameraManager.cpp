@@ -134,10 +134,10 @@ void CameraManager::update()
 	
 	if (!videoMatrix.empty())
 	{
-        /*
+        
 		// Blur the original image
 		GaussianBlur(videoMatrix, _blur);
-		
+		/*
 		// Process the MOG
 		if (_useMask)
 		{

@@ -78,6 +78,7 @@
 ################################################################################
 # PROJECT_LDFLAGS=-Wl,-rpath=./libs
 USER_LIBS = -lraspicam -lraspicam_cv -lmmal -lmmal_core -lmmal_util
+USER_CFLAGS = -I/usr/local/include
 
 ################################################################################
 # PROJECT DEFINES

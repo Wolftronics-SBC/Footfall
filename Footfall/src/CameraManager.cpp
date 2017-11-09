@@ -150,7 +150,7 @@ void CameraManager::update()
 			//pMOG2->operator()(videoMatrix,processedMog);
             pMOG2->apply(videoMatrix,processedMog);
         }
-		/*
+		
 		// Get the background image
 		pMOG2->getBackgroundImage(background);
 		
@@ -170,7 +170,7 @@ void CameraManager::update()
 		// Leave these two
 		threshold(processedMog,50);
 		erode(processedMog,2);
-         */
+         
 	}
 }
 //--------------------------------------------------------------

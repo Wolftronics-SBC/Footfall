@@ -137,7 +137,7 @@ void CameraManager::update()
         
 		// Blur the original image
 		GaussianBlur(videoMatrix, _blur);
-		/*
+		
 		// Process the MOG
 		if (_useMask)
 		{
@@ -150,7 +150,7 @@ void CameraManager::update()
 			//pMOG2->operator()(videoMatrix,processedMog);
             pMOG2->apply(videoMatrix,processedMog);
         }
-		
+		/*
 		// Get the background image
 		pMOG2->getBackgroundImage(background);
 		

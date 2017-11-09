@@ -9,8 +9,8 @@
 
 //#define USE_VIDEO
 //#define USE_WEBCAM
-//#define USE_PI_CAM
-#define USE_RASPICAM_Lib
+#define USE_PI_CAM
+//#define USE_RASPICAM_Lib
 
 #include <stdio.h>
 #include "ofMain.h"

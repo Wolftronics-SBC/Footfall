@@ -44,7 +44,7 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
 	
 #ifdef USE_VIDEO
 	cout << " - Using Video" << endl;
-	videoPlayer.load("yourtestfootage.mov");
+	videoPlayer.load("20171110_165717.avi");
 	videoPlayer.setLoopState(OF_LOOP_NORMAL);
 	videoPlayer.play();
 #endif
@@ -59,6 +59,7 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
 	cout << " - Using Pi Camera" << endl;
 	piCamera.setup(_cameraConfig.camerawidth,_cameraConfig.cameraheight,true);
 	piCamera.setFlips(_cameraConfig.bFlipH,_cameraConfig.bFlipV);
+    piCamera.setAWBMode(0);
     
     //Shutter speed setting
     if(_cameraConfig.shutterSpeed_MilliSec > 0 ) {
@@ -165,7 +166,7 @@ void CameraManager::update()
 		dilate(processedMog,_dilateAmount);
 		erode(processedMog,_erodeAmount);
 		dilate(processedMog,_dilateAmount);
-		GaussianBlur(processedMog, _blur*2);
+		GaussianBlur(processedMog,_blur*2);
 		
 		// Leave these two
 		threshold(processedMog,50);

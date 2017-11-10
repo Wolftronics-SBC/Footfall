@@ -59,8 +59,8 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
 	cout << " - Using Pi Camera" << endl;
 	piCamera.setup(_cameraConfig.camerawidth,_cameraConfig.cameraheight,true);
 	piCamera.setFlips(_cameraConfig.bFlipH,_cameraConfig.bFlipV);
-    piCamera.setAWBMode(MMAL_PARAM_AWBMODE_OFF);
-    piCamera.setAWBGains(0.8,0.8);
+    piCamera.setAWBMode(MMAL_PARAM_AWBMODE_SUNLIGHT);
+    //piCamera.setAWBGains(0.8,0.8);
     piCamera.setExposureMode(MMAL_PARAM_EXPOSUREMODE_FIXEDFPS);
     
     //Shutter speed setting

@@ -108,7 +108,7 @@ void ofApp::blobOut(int &val)
 void ofApp::takePhotoForCalibration() {
     cout<<"Taking photo for calibration"<<endl;
     string imgDirPath = configManager.getConfiguration().otherConfig.baseImagePath;
-    string imgPath = imgDirPath + "calibPhoto.jpg";
+    string imgPath = imgDirPath + "baseImage.jpg";
     
     //Get current frame
     Mat img = cameraManager.videoMatrix;

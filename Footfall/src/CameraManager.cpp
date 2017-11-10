@@ -60,7 +60,7 @@ void CameraManager::setup(Camera_Configuration _cameraConfig)
 	piCamera.setup(_cameraConfig.camerawidth,_cameraConfig.cameraheight,true);
 	piCamera.setFlips(_cameraConfig.bFlipH,_cameraConfig.bFlipV);
     piCamera.setAWBMode(MMAL_PARAM_AWBMODE_OFF);
-    //piCamera.setExposureMode(MMAL_PARAM_EXPOSUREMODE_OFF);
+    piCamera.setExposureMode(MMAL_PARAM_EXPOSUREMODE_OFF);
     
     //Shutter speed setting
     if(_cameraConfig.shutterSpeed_MilliSec > 0 ) {

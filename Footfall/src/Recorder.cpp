@@ -89,6 +89,6 @@ string Recorder::genFileNameForTime(time_t timeVal) {
 //--------------------------------------------------------------
 VideoWriter Recorder::genVideoWriter(string fPName) {
     string vidFName = recdDirPath + fPName + ".avi";
-    VideoWriter vw(vidFName,CV_FOURCC('H','2','6','4'),recordingFPS,Size(recdFrameWidth,recdFrameHeight),true);
+    VideoWriter vw(vidFName,CV_FOURCC('M','J','P','G'),recordingFPS,Size(recdFrameWidth,recdFrameHeight),true);
     return vw;
 }
